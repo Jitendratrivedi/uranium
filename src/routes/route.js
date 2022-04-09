@@ -67,4 +67,92 @@ router.post('/test-post3', randomController.addToArray ); //HANDLER/CONTROLLER
 
 
 
+let players =
+
+   [
+
+       {
+
+           "name": "manish",
+
+           "dob": "1/1/1995",
+
+           "gender": "male",
+
+           "city": "jalandhar",
+
+           "sports": [
+
+               "swimming"
+
+           ]
+
+       },
+
+       {
+
+           "name": "gopal",
+
+           "dob": "1/09/1998",
+
+           "gender": "male",
+
+           "city": "delhi",
+
+           "sports": [
+
+               "soccer"
+
+           ]
+
+       },
+
+       {
+
+           "name": "lokesh",
+
+           "dob": "1/1/1990",
+
+           "gender": "male",
+
+           "city": "mumbai",
+
+           "sports": [
+
+               "soccer"
+
+           ]
+
+       },
+
+   ];  
+  
+   router.post('/addingplayer', function (req, res) {
+    
+    for (let index = 0; index < players.length; index++)
+     {let d= req.body.name
+        if (d==players[index].name) {
+            
+            res.send({msg:"name alreay exists", data:players}) 
+            break;
+            
+        }
+        if (index==players.length-1) {
+            players.push(req.body) 
+            res.send({msg:"new player is added", data:players})
+         }
+
+                
+        }
+        
+    }
+
+    
+   
+);
+
+   
+   
+
+
 module.exports = router;
